@@ -1,32 +1,28 @@
 jQuery.fn.buscarSH = function (numSH) {
-  debugger;
-  alert(`hola ${numSH}`);
-  return this
-};
- 
-/*   $.ajax({
+   
+  //let SuperHero = $(this);
+   $.ajax({
     url: "https://www.superheroapi.com/api.php/3525635500807579/1",
-    type: "get",
+    type: "GET",
+    dataType: "json",
     success: function (data) {
-      let datosapi = numSH;
-      let datoSH = data;
-      debugger;
-      let numelementos = datoSH.legth;
-      aler(` son ${datosapi} elementos`);
-      for (let i = 0; i < datoSH.length; i++) {
+      alert(`hola ${numSH} & ${data}`);
+      //return this;
+      //aler(` son ${datosapi} elementos`);
+      /* for (let i = 0; i < datoSH.length; i++) {
         console.log(datoSH[i]);
         let id = datoSH[i].id;
         alert(`este es el id ${id}`);
-      }
+      } */
     },
-    error: function (error) {
-      console.log(error);
-    },
+     error: function (error) {
+       alert(` no se encontro el Super Heroe ${numSH}`);
+    }, 
   });
   return this;
 };
 
-
+/*
 window.onload = function () {
   let datapoints = [];
 

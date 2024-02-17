@@ -1,7 +1,8 @@
-const numSH = document.getElementById("numSH");
+const numSH = document.getElementsByClassName("numSH");
 
-$(document).ready(function () {
-  $('.btn').click(function () {
-    $(this).bucarSH(numSH.value);
-  });
-});
+$("#form").on("submit", function (event) {
+    event.preventDefault();
+    const numSH = +$("#numSH").val();
+    let Super=buscarSH(numSH);
+}
+);
