@@ -13,13 +13,11 @@ function buscarSH(numSH) {
     type: "GET",
     url: `https://www.superheroapi.com/api.php/2619421814940190/${numSH}`,
 
-      success: function (data) {
-          debugger;
-          
-          let conexiones = (`${data.connections["group-affiliation"]} ${data.connections["relatives"]}`);
-          let biography = (`${data.biography["full-name"]} ${data.biography["alter-ego"]} ${data.biography["aliases"]} ${data.biography["place-of-birth"]}`)
-          let appearance = (`${data.appearance["eye-color"]} ${data.appearance["gender"]} ${data.appearance["height"]} ${data.appearance["weight"]}`)
-            let datoSH = `
+    success: function (data) {
+      let conexiones = `${data.connections["group-affiliation"]} ${data.connections["relatives"]}`;
+      let biography = `${data.biography["full-name"]} ${data.biography["alter-ego"]} ${data.biography["aliases"]} ${data.biography["place-of-birth"]}`;
+      let appearance = `${data.appearance["eye-color"]} ${data.appearance["gender"]} ${data.appearance["height"]} ${data.appearance["weight"]}`;
+      let datoSH = `
         <div class="container">
             <h2>Super Heroe</h2>
             <div class="card my-3" style="max-width: 540px">
@@ -36,7 +34,7 @@ function buscarSH(numSH) {
                         <hr>
                         <p class="card-text " id="primeraAparicionSH">Primera aparicion: ${data.biography["first-appearance"]}</p>
                         <hr>
-                        <p class="card-text" id="alturaSH">Altura:${data.appearance.height}</p>
+                        <p class="card-text" id="alturaSH">Altura:  ${data.appearance.height}</p>
                         <hr>
                         <p class="card-text" id="pesoSH">Peso: ${data.appearance.weight}</p>
                         <hr>
@@ -46,12 +44,22 @@ function buscarSH(numSH) {
                     </div>
                 </div>
             </div>
-        </div>`;
-      $(".datosSH").append(datoSH);
+        </div> `;
+        $(".datosSH").append(datoSH);
+        grafico(data.powerstats);
     },
     error: function (error) {
       alert(` no se encontro el Super Heroe ${numSH}`);
     },
   });
+  return this;
+}
+
+function grafico(data) {
+    let ejes = [];
+    let grafico = `
+    <div class="Grafico container">
+        <canvas id="myChart" width="400" height="400"></canvas>
+        </div>`;
   return this;
 }
